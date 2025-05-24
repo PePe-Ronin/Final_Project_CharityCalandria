@@ -66,9 +66,9 @@ class StudentAcademicSystem:
                 subject_name = input(f"Enter name for Subject {i}: ").strip()
                 while True:
                     try:
-                        grade = float(input(f"Enter grade for {subject_name} (0-100): "))
-                        if grade < 0 or grade > 100:
-                            print("Grade must be between 0 and 100.")
+                        grade = float(input(f"Enter grade for {subject_name} (1.0 to 5.0): "))
+                        if grade < 0 or grade > 5.0:
+                            print("Grade must be between 1.0 to 5.0.")
                             continue
                         grades[subject_name] = grade
                         break
@@ -77,7 +77,7 @@ class StudentAcademicSystem:
 
             # Calculate average and pass/fail status
             average = sum(grades.values()) / len(grades)
-            status = "Pass" if average >= 75 else "Fail"
+            status = "Pass" if average <= 3.5 else "Fail"
             
             # Store in students dictionary
             self.students[student_id] = {
